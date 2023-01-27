@@ -12,10 +12,9 @@ class ScrapeProductOptions extends Command
     protected $description = 'Scrapes product options from the specified website and returns them in a JSON array';
 
     // Use dependency injection to inject the HTTP client as a service
-    public function __construct(Client $client)
+    public function __construct(protected Client $client)
     {
         parent::__construct();
-        $this->client = $client;
     }
 
     public function handle()
