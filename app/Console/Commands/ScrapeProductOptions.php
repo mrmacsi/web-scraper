@@ -61,7 +61,7 @@ class ScrapeProductOptions extends Command
         // Sort the options by annual price in descending order
         $options = collect($options)->sortByDesc(function ($option) {
             return $option['price'];
-        });
+        })->values()->toArray();
 
         // Output the options as a JSON encoded string
         $this->info(json_encode($options));
