@@ -42,6 +42,7 @@ class ScrapeProductOptions extends Command
             $isDiscounted = $priceDiv->filter('p')->count() > 0;
             $discountAmount = 0;
 
+            // Check if there is a discount available
             if ($isDiscounted){
                 //get price with regex digits pattern
                 preg_match('/£(\d+\.\d+)/', $priceDiv->filter('p')->text(), $matches);
@@ -52,7 +53,6 @@ class ScrapeProductOptions extends Command
                 'title' => $tr->filter('.header h3')->first()->text(),
                 'description' => $packages->filter('.package-description')->text(),
                 'price' => $annual,
-                // Check if there is a discount available
                 'discount' => $discountAmount,
             ];
         });
